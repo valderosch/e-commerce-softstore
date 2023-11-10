@@ -1,0 +1,15 @@
+﻿@model SoftStore.ViewModels.HomepageViewModel
+
+<div class="container" style="margin-top: 5rem;"> 
+    <h2>Best Products</h2>
+    <hr />
+    <div class="row mt-5 mb-2">
+        @{
+            foreach (Product product in Model.favProds)
+            {
+                @Html.Partial("_Products", product)
+                <div>@product.productName</div>
+            }
+        }
+    </div>
+</div>

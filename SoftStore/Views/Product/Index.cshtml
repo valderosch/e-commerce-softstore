@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container" style="margin-top: 5rem;">
+    <h2>Products</h2>
+    <h4>Category [ @Model.currentCategory ]</h4>
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="/Product/All" class="list-group-item list-group-item-action">All</a>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <a href="/Product/@category/" class="list-group-item list-group-item-action @(category.Equals(ViewBag.CurrentCategory, StringComparison.OrdinalIgnoreCase) ? "active" : "")">@category</a>
+            }
+        </div>
+    </div>
+    <div class="row mt-5 mb-2">
+        @{
+            foreach (Product product in Model.allProducts)
+            {
+                @Html.Partial("_Products", product)
+            }
+        }
+    </div>
+</div>
+

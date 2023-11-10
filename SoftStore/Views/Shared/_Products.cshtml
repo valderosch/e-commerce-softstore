@@ -1,0 +1,17 @@
+﻿<div class="col-lg-4">
+    <div class="card shadow-sm">
+        <img class="img-thumbnail" src="@Model.image" alt="@Model.productName" />
+        <div class="card-body">
+            <h3> @Model.productName </h3>
+            <p> @Model.shortDescription </p>
+            <h5> @Model.price.ToString("c")</h5>
+            <div class="d-flex justify-content-between align-items-center">
+                <p><a class="btn btn-info" asp-controller="Cart" asp-action="addToCart" asp-route-id="@Model.id">Add to Cart</a></p>
+                <div>
+                    <small class="text-body-secondary">Fauvorite</small>
+                    <button>@(Model.wishlist==true ? "+" : "-")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model CartViewModel
+
+<div class="container" style="margin-top: 5rem;">
+    <h3>Your cart</h3>
+    <h5>@Model.Cart.itemsList</h5>
+    @if (Model.Cart.itemsList != null && Model.Cart.itemsList.Any())
+    {
+        foreach (var el in Model.Cart.itemsList)
+        {
+            System.Diagnostics.Debug.WriteLine($"Product: {el.product.productName}, Price: {el.product.price.ToString("c")}");
+            Console.WriteLine($"Product: {el.product.productName}, Price: {el.product.price.ToString("c")}");
+            <div class="alert alert-info mt-3">
+                <b>Product: </b> @el.product.productName<br />
+                <b>Price: </b> @el.product.price.ToString("c")
+            </div>
+            <hr />
+        }
+        <h5>Total: </h5>
+        <a class="btn btn-info mt-4" asp-controller="Order" asp-action="Checkout">Buy</a>
+    }
+    else
+    {
+        <h5 class="text-secondary">
+            Your shop cart is empty. It's time to add some products!
+            Click <a class="link-body-emphasis link-info" asp-controller="Product" asp-action="Index">here</a> to browse them.
+        </h5>
+    }
+
+</div>
